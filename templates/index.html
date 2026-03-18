@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Enhanced Danbooru</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+  </head>
+  <body>
+    <main class="container">
+      <h1>Enhanced Danbooru</h1>
+      <p class="subtitle">Search with multiple tags and exclusions</p>
+
+      <form id="search-form" class="search-panel">
+        <label>
+          Tags
+          <input
+            id="tags"
+            name="tags"
+            type="text"
+            placeholder="e.g. 1girl smile -rating:explicit"
+            required
+          />
+        </label>
+
+        <label>
+          Source
+          <select id="source" name="source">
+            <option value="danbooru">danbooru</option>
+            <option value="yandere">yandere</option>
+            <option value="konachan">konachan</option>
+            <option value="gelbooru">gelbooru</option>
+          </select>
+        </label>
+
+        <label>
+          Start page
+          <input id="page" name="page" type="number" min="1" value="1" />
+        </label>
+
+        <button type="submit">Search</button>
+      </form>
+
+      <div class="actions">
+        <button id="load-more" type="button" disabled>Load more</button>
+        <span id="status">Ready</span>
+      </div>
+
+      <section id="results" class="grid" aria-live="polite"></section>
+    </main>
+
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+  </body>
+</html>
